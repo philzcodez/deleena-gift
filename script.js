@@ -123,6 +123,12 @@ const songs = [
     { title: "Eyes Without A Face", artist: "Billy Idol", src: "music/song3.mp3" },
     { title: "I Was Made For Lovin' You", artist: "KISS", src: "music/song4.mp3" },
     { title: "Come On Eileen", artist: "Dexys Midnight Runners", src: "music/song5.mp3" },
+    { title: "Lovers Rock", artist: "TV Girl", src: "music/song6.mp3" },
+    { title: "Watermelon", artist: "John + Jane Q. Public", src: "music/song7.mp3" },
+    { title: "Beautiful Boy", artist: "John Lennon", src: "music/song8.mp3" },
+    { title: "Say Yes To Heaven", artist: "Lana Del Rey", src: "music/song9.mp3" },
+    { title: "Can't Take My Eyes off You", artist: "Frankie Valli", src: "music/song10.mp3" },
+    { title: "(I Just) Died In Your Arms", artist: "Cutting Crew", src: "music/song11.mp3" },
     // Add more songs here:
     // { title: "Song Name", artist: "Artist", src: "music/filename.mp3" },
 ];

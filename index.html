@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>For Deleena 💜🩵</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="background"></div>
+        <div class="container">
+
+            <div class="intro-screen" id="intro">
+                <h1 class="title">I made something for you.</h1>
+                <p class="subtitle">Tap below 🩵💜</p>
+                <button id="openBtn">Open</button>
+            </div>
+
+            <div class="main-content hidden" id="mainContent">
+                <div class="glass-card">
+                    <h2 id="typing"></h2>
+
+                    <div class="btn-row">
+                        <button class="love-btn" id="reasonBtn">Tell Me Something Sweet</button>
+                        <button class="love-btn" id="photoBtn">Show Me Someone Beautiful</button>
+                    </div>
+
+                    <p id="reasonText"></p>
+
+                    <div id="photoGallery" class="hidden">
+                        <img id="galleryImage" src="photos/photo1.jpg" alt="A beautiful photo">
+                        <div class="gallery-buttons">
+                            <button class="icon-btn" id="prevBtn">←</button>
+                            <button class="icon-btn" id="nextBtn">→</button>
+                        </div>
+                    </div>
+
+                    <div class="music-player">
+                        <div class="player-top">
+                            <div class="song-info">
+                                <h3 id="songTitle">I Think We're Alone Now</h3>
+                                <p id="songArtist">Tiffany</p>
+                            </div>
+                            <div class="player-controls">
+                                <button class="icon-btn" id="prevSongBtn">⏮</button>
+                                <button id="playBtn">▶</button>
+                                <button class="icon-btn" id="nextSongBtn">⏭</button>
+                                <button class="icon-btn" id="queueBtn">☰</button>
+                            </div>
+                        </div>
+                        <div id="songList" class="hidden"></div>
+                    </div>
+
+                    <audio id="song"></audio>
+
+                    <button id="finalBtn">One Last Thing...</button>
+
+                    <div id="finalScreen" class="hidden">
+                        <h1 class="finalText">In every universe...</h1>
+                        <h1 class="finalText delay">I'd still choose you.</h1>
+                        <p class="endingMessage">Happy Birthday Deleena ❤️</p>
+                        <button id="backBtn">← Go Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

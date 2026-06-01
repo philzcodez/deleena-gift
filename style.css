@@ -347,3 +347,64 @@ button:active{
         align-items:flex-start;
     }
 }
+
+
+/* - password - */
+
+.password-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 280px; 
+    margin: 0 auto 15px auto; 
+}
+
+#passwordInput {
+    padding: 12px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.08);
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    text-align: center;
+    letter-spacing: 2px;
+    width: 160px;
+    flex-grow: 1;
+    box-sizing: border-box;
+}
+
+#passwordInput::placeholder {
+    letter-spacing: normal;
+    opacity: 0.4;
+}
+
+
+#hintText {
+    color: #e9d5ff;
+    font-size: 0.95rem;
+    min-height: 24px;
+    opacity: 0.85;
+    animation: fadeIn 0.4s ease;
+}
+
+.icon-btn {
+    width: 46px; /* Explicit width to match the height */
+    height: 46px; /* Matches total height of the input */
+    border-radius: 50px; /* Keeps it circular */
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.15); /* Slightly brighter background for contrast */
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background 0.2s ease;
+}
+
+.icon-btn:hover {
+    background: rgba(255,255,255,0.25);
+}

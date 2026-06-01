@@ -12,8 +12,13 @@
 
             <div class="intro-screen" id="intro">
                 <h1 class="title">I made something for you.</h1>
-                <p class="subtitle">Tap below 🩵💜</p>
+                <p class="subtitle">Wanna see 🩵💜?</p>
+                <div class = "password-row">
+                    <input type = "password" id = "passwordInput" placeholder = "e.g. MM/DD/YY"/>
+                    <button class = "icon-btn" id = "togglePassword">👁️</button>
+                </div>
                 <button id="openBtn">Show Me Please</button>
+                <p id = "hintText"></p>
             </div>
 
             <div class="main-content hidden" id="mainContent">
@@ -30,8 +35,6 @@
                     <div id="photoGallery" class="hidden">
                         <img id="galleryImage" src="photos/photo1.jpg" alt="A beautiful photo">
                         <div class="gallery-buttons">
-                            <button class="icon-btn" id="prevBtn">←</button>
-                            <button class="icon-btn" id="nextBtn">→</button>
                         </div>
                     </div>
 

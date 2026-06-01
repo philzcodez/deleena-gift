@@ -37,10 +37,40 @@ const reasons = [
     "I love you Deleena, to the edge of the universe and beyond."
 ];
 
+const passwordInput = document.getElementById("passwordInput");
+const togglePassword = document.getElementById("togglePassword");
+const hintText = document.getElementById("hintText");
+
+const hints = [
+    "Hint: it happened in February...💜🩵",
+    "Hint: maybe its an anniversary...💜🩵",
+    "Hint: try 02/22/26...💜🩵",
+    "Hint: we celebrate it every month...💜🩵"
+];
+
+let hintIndex = 0;
+
+togglePassword.addEventListener("click", () => {
+    const type = passwordInput.type === "password" ? "text" : "password";
+    passwordInput.type = type;
+    togglePassword.innerHTML = type === "password" ? "👁️" : "🙈";
+});
+
 openBtn.addEventListener("click", () => {
-    intro.classList.add("hidden");
-    mainContent.classList.remove("hidden");
-    typeWriter();
+    if (passwordInput.value.trim() === "02/22/26"){
+        intro.classList.add("hidden");
+        mainContent.classList.remove("hidden");
+        typeWriter();
+    } else {
+        hintText.textContent = hints[Math.min(hintIndex, hints.length-1)];
+        hintIndex++;
+        passwordInput.value = "";
+        passwordInput.focus();
+    }
+});
+
+passwordInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") openBtn.click();
 });
 
 function typeWriter() {
@@ -51,9 +81,15 @@ function typeWriter() {
     }
 }
 
+let lastReasonIndex = -1;
+
 reasonBtn.addEventListener("click", () => {
-    const randomReason = reasons[Math.floor(Math.random() * reasons.length)];
-    reasonText.innerHTML = randomReason;
+    let randomIndex;
+    do {
+        randomIndex = Math.floor(Math.random() * reasons.length);
+    } while (randomIndex === lastReasonIndex);
+    lastReasonIndex = randomIndex;
+    reasonText.innerHTML = reasons[randomIndex];
 });
 
 // Photo gallery
@@ -102,19 +138,20 @@ const photos = [
 
 let currentPhoto = 0;
 
+let lastPhotoIndex = -1;
+
 photoBtn.addEventListener("click", () => {
+    let randomIndex;
+    do {
+        randomIndex = Math.floor(Math.random() * photos.length);
+    } while (randomIndex === lastPhotoIndex);
+    lastPhotoIndex = randomIndex;
+    currentPhoto = randomIndex;
+    galleryImage.src = photos[currentPhoto];
+
     photoGallery.classList.remove("hidden");
 });
 
-nextBtn.addEventListener("click", () => {
-    currentPhoto = (currentPhoto + 1) % photos.length;
-    galleryImage.src = photos[currentPhoto];
-});
-
-prevBtn.addEventListener("click", () => {
-    currentPhoto = (currentPhoto - 1 + photos.length) % photos.length;
-    galleryImage.src = photos[currentPhoto];
-});
 
 // Music player
 const songs = [

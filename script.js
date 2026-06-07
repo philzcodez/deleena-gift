@@ -1,3 +1,5 @@
+// for the best girlfriend ever, I love you Deleena H Ramchan
+
 const openBtn = document.getElementById("openBtn");
 const intro = document.getElementById("intro");
 const mainContent = document.getElementById("mainContent");

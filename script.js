@@ -87,9 +87,10 @@ const hintText       = document.getElementById("hintText");
 const hints = [
     "Hint: it happened in February... 💜🩵",
     "Hint: maybe it's an anniversary... 💜🩵",
-    "Hint: try 02/22/26... 💜🩵",
     "Hint: we celebrate it every month... 💜🩵",
-    "Hint: baby, its our anniversary"
+    "Hint: try 02/22/26... 💜🩵",
+    "Hint: you need to include the slashes babe \"02/22/26\" 💜🩵",
+    "Hint: almost there my sweet, you need some help baby? 💜🩵"
 ];
 let hintIndex = 0;
 

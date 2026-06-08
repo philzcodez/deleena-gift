@@ -147,7 +147,8 @@ const photos = [
     "photos/photo21.JPG","photos/photo22.JPG","photos/photo23.jpg","photos/photo24.jpg",
     "photos/photo25.jpg","photos/photo26.jpeg","photos/photo27.jpeg","photos/photo28.JPG",
     "photos/photo29.JPG","photos/photo30.JPG","photos/photo31.JPG","photos/photo32.jpeg",
-    "photos/photo33.jpeg","photos/photo34.jpeg",
+    "photos/photo33.jpeg","photos/photo34.jpeg", "photos/photo35.jpeg", "photos/photo36.jpeg", 
+    "photos/photo37.jpeg", "photos/photo38.JPG", "photos/photo39.JPG", "photos/photo40.jpeg", 
 ];
 
 let lastPhotoIndex = -1;

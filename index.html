@@ -4,28 +4,34 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>For Deleena 💜🩵</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div class="background"></div>
+        <canvas id="stars-canvas"></canvas>
+
         <div class="container">
 
             <div class="intro-screen" id="intro">
                 <h1 class="title">I made something for you.</h1>
                 <p class="subtitle">Wanna see 🩵💜?</p>
-                <div class = "password-row">
-                    <input type = "password" id = "passwordInput" placeholder = "e.g. MM/DD/YY"/>
-                    <button class = "icon-btn" id = "togglePassword">👁️</button>
+                <div class="password-row">
+                    <input type="password" id="passwordInput" placeholder="e.g. MM/DD/YY"/>
+                    <button class="icon-btn" id="togglePassword">👁️</button>
                 </div>
                 <button id="openBtn">Show Me Please</button>
-                <p id = "hintText"></p>
+                <p id="hintText"></p>
             </div>
 
             <div class="main-content hidden" id="mainContent">
                 <div class="glass-card">
                     <h2 id="typing"></h2>
 
-                    <div class="btn-row">
+                    <div class="
+                    btn-row">
                         <button class="love-btn" id="reasonBtn">Tell Me Something Sweet</button>
                         <button class="love-btn" id="photoBtn">Show Me Someone Beautiful</button>
                     </div>
@@ -33,11 +39,10 @@
                     <p id="reasonText"></p>
 
                     <div id="photoGallery" class="hidden">
-                        <div class = "polaroid">
-                            <img id ="galleryImage" src="photos/photo1.jpg" alt="A beautiful photo">
+                        <div class="polaroid">
+                            <img id="galleryImage" src="photos/photo1.jpg" alt="A beautiful photo">
                         </div>
-                        <div class="gallery-buttons">
-                        </div>
+                        <div class="gallery-buttons"></div>
                     </div>
 
                     <div class="music-player">
@@ -52,6 +57,13 @@
                                 <button class="icon-btn" id="nextSongBtn">⏭</button>
                                 <button class="icon-btn" id="queueBtn">☰</button>
                             </div>
+                        </div>
+                        <div class="progress-wrap">
+                            <span class="progress-time" id="currentTime">0:00</span>
+                            <div class="progress-bar-bg" id="progressBar">
+                                <div class="progress-bar-fill" id="progressFill"></div>
+                            </div>
+                            <span class="progress-time" id="totalTime">0:00</span>
                         </div>
                         <div id="songList" class="hidden"></div>
                     </div>

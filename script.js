@@ -88,7 +88,8 @@ const hints = [
     "Hint: it happened in February... 💜🩵",
     "Hint: maybe it's an anniversary... 💜🩵",
     "Hint: try 02/22/26... 💜🩵",
-    "Hint: we celebrate it every month... 💜🩵"
+    "Hint: we celebrate it every month... 💜🩵",
+    "Hint: baby, its our anniversary"
 ];
 let hintIndex = 0;
 

@@ -163,7 +163,7 @@ photoBtn.addEventListener("click", () => {
 
 // ── Music player ───────────────────────────────────────
 const songs = [
-    { title: "I Think We're Alone Now",   artist: "Tiffany",                   src: "music/song1.mp3" },
+    { title: "I Think We're Alone Now",    artist: "Tiffany",                   src: "music/song1.mp3" },
     { title: "Like Real People Do",        artist: "Hozier",                    src: "music/song2.mp3" },
     { title: "Eyes Without A Face",        artist: "Billy Idol",                src: "music/song3.mp3" },
     { title: "I Was Made For Lovin' You",  artist: "KISS",                      src: "music/song4.mp3" },
@@ -174,6 +174,12 @@ const songs = [
     { title: "Say Yes To Heaven",          artist: "Lana Del Rey",              src: "music/song9.mp3" },
     { title: "Can't Take My Eyes off You", artist: "Frankie Valli",             src: "music/song10.mp3" },
     { title: "(I Just) Died In Your Arms", artist: "Cutting Crew",              src: "music/song11.mp3" },
+    { title: "Uptown Girl",                artist: "Billy Joel",                src: "music/song12.mp3" },
+    { title: "Time After Time",            artist: "Cydni Lauper",              src: "music/song13.mp3" },
+    { title: "Your Love",                  artist: "The Outfield",              src: "music/song14.mp3" },
+    { title: "And I Love Her",             artist: "The Beatles",               src: "music/song15.mp3" },
+    { title: "Put Your Head On My Shoulder", artist: "Paul Anka",               src: "music/song16.mp3" },
+    //{ title: "title", artist: "artist",              src: "music/songx.mp3" },
 ];
 
 let currentSong = 0;

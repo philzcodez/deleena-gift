@@ -30,10 +30,10 @@
                 <div class="glass-card">
                     <h2 id="typing"></h2>
 
-                    <div class="
-                    btn-row">
+                    <div class="btn-row">
                         <button class="love-btn" id="reasonBtn">Tell Me Something Sweet</button>
                         <button class="love-btn" id="photoBtn">Show Me Someone Beautiful</button>
+                        <button class="love-btn" id="gameBtn">Catch My Heart 💜</button>
                     </div>
 
                     <p id="reasonText"></p>
@@ -78,8 +78,31 @@
                         <p class="endingMessage">Happy Birthday Deleena 🩵💜</p>
                         <button id="backBtn">← Go Back</button>
                     </div>
+
+                </div> <!-- closes .glass-card -->
+            </div> <!-- closes .main-content -->
+
+        </div> <!-- closes .container -->
+
+        <!-- Game screen outside the card, fullscreen overlay -->
+        <div id="gameScreen" class="hidden">
+            <div class="game-hud">
+                <div class="game-stat">
+                    <span class="game-label">score</span>
+                    <span id="gameScore">0</span>
+                </div>
+                <div class="game-stat">
+                    <span class="game-label">time</span>
+                    <span id="gameTimer">30</span>
                 </div>
             </div>
+            <canvas id="gameCanvas"></canvas>
+            <div id="gameResult" class="hidden">
+                <p id="gameResultMsg"></p>
+                <button id="gameRestartBtn">Play Again 💜</button>
+                <button id="gameCloseBtn">← Back</button>
+            </div>
+            <button id="gameExitBtn">✕</button>
         </div>
 
         <script>

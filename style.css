@@ -558,3 +558,135 @@ button:active {
         height: 270px;
     }
 }
+
+/* ── Catch My Heart Game ────────────────────────────────── */
+#gameScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: radial-gradient(ellipse at 30% 10%, #2d0a5e 0%, #000 70%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    touch-action: none;
+}
+
+#gameScreen::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle 280px at 15% 20%, rgba(192,38,211,0.1), transparent),
+        radial-gradient(circle 220px at 85% 75%, rgba(56,189,248,0.08), transparent);
+    pointer-events: none;
+}
+
+.game-hud {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 18px 30px 10px;
+    pointer-events: none;
+}
+
+.game-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.game-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.game-stat span:last-child {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1;
+    background: linear-gradient(135deg, #fff 40%, #c084fc 80%, #67e8f9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 20px rgba(192,38,211,0.4));
+}
+
+#gameCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    touch-action: none;
+}
+
+#gameResult {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 40px 30px;
+    background: rgba(0,0,0,0.72);
+    backdrop-filter: blur(12px);
+    z-index: 20;
+    animation: fadeUp 0.5s ease both;
+}
+
+#gameResultMsg {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3rem, 4.5vw, 1.9rem);
+    line-height: 1.5;
+    text-align: center;
+    background: linear-gradient(135deg, #fff 45%, #c084fc 75%, #67e8f9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 24px rgba(192,38,211,0.4));
+    max-width: 320px;
+}
+
+#gameRestartBtn {
+    background: linear-gradient(135deg, #c026d3, #7c3aed);
+    padding: 13px 32px;
+}
+
+#gameCloseBtn {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid var(--glass-border);
+    padding: 10px 24px;
+    font-size: 0.88rem;
+}
+
+#gameExitBtn {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid var(--glass-border);
+    font-size: 0.85rem;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#gameExitBtn:hover {
+    background: rgba(255,255,255,0.15);
+    transform: scale(1.08);
+}

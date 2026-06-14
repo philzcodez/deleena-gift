@@ -270,3 +270,228 @@ finalBtn.addEventListener("click", () => {
 });
 
 backBtn.addEventListener("click", () => finalScreen.classList.add("hidden"));
+
+// ── Catch My Heart Game ────────────────────────────────
+const gameBtn      = document.getElementById("gameBtn");
+const gameScreen   = document.getElementById("gameScreen");
+const gameCanvas   = document.getElementById("gameCanvas");
+const gameCtx      = gameCanvas.getContext("2d");
+const gameScoreEl  = document.getElementById("gameScore");
+const gameTimerEl  = document.getElementById("gameTimer");
+const gameResult   = document.getElementById("gameResult");
+const gameResultMsg= document.getElementById("gameResultMsg");
+const gameRestartBtn = document.getElementById("gameRestartBtn");
+const gameCloseBtn = document.getElementById("gameCloseBtn");
+const gameExitBtn  = document.getElementById("gameExitBtn");
+
+let gameRunning = false;
+let gameScore   = 0;
+let gameTime    = 30;
+let heartsList  = [];
+let gameAnimId  = null;
+let gameInterval= null;
+let spawnInterval = null;
+let lastTime    = 0;
+
+const resultMessages = [
+    { min: 0,  msg: "Aww, you tried! I love you anyway 💜" },
+    { min: 5,  msg: "Not bad! My heart is safe with you 🩵" },
+    { min: 12, msg: "You caught so many! Just like you caught me 💜🩵" },
+    { min: 20, msg: "Heart-catching champion! You already had mine 💜" },
+    { min: 28, msg: "Perfect! You catch everything I throw at you 🩵💜✨" },
+];
+
+function getResultMsg(score) {
+    let msg = resultMessages[0].msg;
+    for (const r of resultMessages) {
+        if (score >= r.min) msg = r.msg;
+    }
+    return msg;
+}
+
+function resizeGameCanvas() {
+    gameCanvas.width  = gameScreen.clientWidth;
+    gameCanvas.height = gameScreen.clientHeight;
+}
+
+class FallingHeart {
+    constructor(canvasW, canvasH, speed) {
+        this.x     = Math.random() * (canvasW - 60) + 30;
+        this.y     = -40;
+        this.size  = Math.random() * 18 + 22; // 22–40px
+        this.speed = speed * (0.75 + Math.random() * 0.5);
+        this.wobble= Math.random() * Math.PI * 2;
+        this.wobbleSpeed = 0.04 + Math.random() * 0.03;
+        this.color = Math.random() > 0.5 ? "#c026d3" : "#38bdf8";
+        this.alpha = 0;
+        this.caught= false;
+        this.pop   = 0; // pop animation when caught
+        this.canvasH = canvasH;
+        this.canvasW = canvasW;
+    }
+
+    update() {
+        if (this.caught) {
+            this.pop += 0.18;
+            this.alpha = Math.max(0, 1 - this.pop);
+            return;
+        }
+        this.alpha = Math.min(1, this.alpha + 0.06);
+        this.wobble += this.wobbleSpeed;
+        this.x += Math.sin(this.wobble) * 0.7;
+        this.y += this.speed;
+    }
+
+    isOffScreen() {
+        return this.y > this.canvasH + 50;
+    }
+
+    isCaught(tx, ty) {
+        const dx = tx - this.x;
+        const dy = ty - this.y;
+        return Math.sqrt(dx * dx + dy * dy) < this.size + 12;
+    }
+
+    draw(ctx) {
+        if (this.alpha <= 0) return;
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        const s = this.caught ? this.size * (1 + this.pop * 1.5) : this.size;
+        ctx.translate(this.x, this.y);
+        drawHeart(ctx, s, this.color, this.caught);
+        ctx.restore();
+    }
+}
+
+function drawHeart(ctx, size, color, glowing) {
+    ctx.font = `${size * 2}px serif`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    if (glowing) {
+        ctx.shadowColor = color;
+        ctx.shadowBlur  = 20;
+    }
+
+    // Alternate between your two heart emojis
+    ctx.fillText(color === "#c026d3" ? "💜" : "🩵", 0, 0);
+    ctx.shadowBlur = 0;
+}
+
+function spawnHeart() {
+    if (!gameRunning) return;
+    const elapsed = 30 - gameTime;
+    // Ramp: starts at 1.4, caps at 3.2 around t=20s
+    const speed = Math.min(1.4 + elapsed * 0.09, 3.2);
+    heartsList.push(new FallingHeart(gameCanvas.width, gameCanvas.height, speed));
+}
+
+function gameLoop(ts) {
+    if (!gameRunning) return;
+    const dt = ts - lastTime;
+    lastTime = ts;
+
+    gameCtx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+
+    // Draw faint falling particle trail (reuse starfield feel)
+    heartsList = heartsList.filter(h => {
+        h.update();
+        h.draw(gameCtx);
+        // remove if off screen or fully faded after catch
+        if (h.caught && h.alpha <= 0) return false;
+        if (!h.caught && h.isOffScreen()) return false;
+        return true;
+    });
+
+    gameAnimId = requestAnimationFrame(gameLoop);
+}
+
+function startGame() {
+    gameScore  = 0;
+    gameTime   = 30;
+    heartsList = [];
+    gameRunning= true;
+    gameScoreEl.textContent = "0";
+    gameTimerEl.textContent = "30";
+    gameResult.classList.add("hidden");
+    resizeGameCanvas();
+
+    // Countdown timer
+    gameInterval = setInterval(() => {
+        gameTime--;
+        gameTimerEl.textContent = gameTime;
+        if (gameTime <= 0) endGame();
+    }, 1000);
+
+    // Spawn hearts — start 1 every 900ms, ramp to every 550ms
+    let spawnDelay = 900;
+    function scheduleSpawn() {
+        if (!gameRunning) return;
+        spawnHeart();
+        const elapsed = 30 - gameTime;
+        spawnDelay = Math.max(550, 900 - elapsed * 18);
+        spawnInterval = setTimeout(scheduleSpawn, spawnDelay);
+    }
+    scheduleSpawn();
+
+    lastTime = performance.now();
+    gameAnimId = requestAnimationFrame(gameLoop);
+}
+
+function endGame() {
+    gameRunning = false;
+    clearInterval(gameInterval);
+    clearTimeout(spawnInterval);
+    cancelAnimationFrame(gameAnimId);
+    gameResultMsg.textContent = getResultMsg(gameScore);
+    gameResult.classList.remove("hidden");
+}
+
+function handleTap(x, y) {
+    if (!gameRunning) return;
+    let caught = false;
+    for (const h of heartsList) {
+        if (!h.caught && h.isCaught(x, y)) {
+            h.caught = true;
+            gameScore++;
+            gameScoreEl.textContent = gameScore;
+            caught = true;
+            break; // one tap = one heart
+        }
+    }
+}
+
+// Touch events (mobile first)
+gameCanvas.addEventListener("touchstart", e => {
+    e.preventDefault();
+    const rect = gameCanvas.getBoundingClientRect();
+    for (const t of e.changedTouches) {
+        handleTap(t.clientX - rect.left, t.clientY - rect.top);
+    }
+}, { passive: false });
+
+// Mouse fallback for desktop
+gameCanvas.addEventListener("mousedown", e => {
+    const rect = gameCanvas.getBoundingClientRect();
+    handleTap(e.clientX - rect.left, e.clientY - rect.top);
+});
+
+gameBtn.addEventListener("click", () => {
+    gameScreen.classList.remove("hidden");
+    startGame();
+});
+
+gameExitBtn.addEventListener("click", () => {
+    endGame();
+    gameScreen.classList.add("hidden");
+});
+
+gameRestartBtn.addEventListener("click", startGame);
+
+gameCloseBtn.addEventListener("click", () => {
+    gameScreen.classList.add("hidden");
+});
+
+window.addEventListener("resize", () => {
+    if (!gameScreen.classList.contains("hidden")) resizeGameCanvas();
+});

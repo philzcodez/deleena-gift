@@ -51,6 +51,7 @@ const reasonText = document.getElementById("reasonText");
 const message = "Every line of code here exists because you make my world so much better. Happy Birthday Moy Dorogov, my Deleena 💜🩵";
 let index = 0;
 
+// Tell me something sweet text
 const reasons = [
     "Your smile is so addictive.",
     "You can shine up my life even in my darkest hour.",
@@ -60,7 +61,7 @@ const reasons = [
     "You never fail to put a smile on my face.",
     "You are quite literally the kindest person I've ever met.",
     "I'm so proud of you for everything you do, and I mean EVERYTHING.",
-    "You gave me a reason to keep going.",
+    "You give me a reason to keep going.",
     "There is NOBODY else I want to spend forever with.",
     "I only want to watch shows together with you.",
     "I love when you do deep dives into music.",
@@ -76,6 +77,11 @@ const reasons = [
     "You are the only person I could never get bored talking to.",
     "You are the only person (besides our future potential kids) I want to read and sing to sleep.",
     "You always keep your promises, and you make me feel so safe and comfy.",
+    "You are my favorite person, even when you're grumpy.",
+    "I love when we watch shows and listen to music together.",
+    "I love every date night together with you.",
+    "You will forever, deserve all the good things I give you",
+    "Beautiful, Beautiful, Beautiful, Beautiful girl~... \nDarling, Darling, Darling, Darling Deleena~...",
     "I love you Deleena, to the edge of the universe and beyond."
 ];
 
@@ -84,13 +90,15 @@ const passwordInput  = document.getElementById("passwordInput");
 const togglePassword = document.getElementById("togglePassword");
 const hintText       = document.getElementById("hintText");
 
+// Password Hints
 const hints = [
     "Hint: it happened in February... 💜🩵",
     "Hint: maybe it's an anniversary... 💜🩵",
     "Hint: we celebrate it every month... 💜🩵",
     "Hint: try 02/22/26... 💜🩵",
-    "Hint: you need to include the slashes babe \"02/22/26\" 💜🩵",
-    "Hint: almost there my sweet, you need some help baby? 💜🩵"
+    "Hint: you need to include the slashes babe \"02/22/26\"... 💜🩵",
+    "Hint: almost there my sweet, you need some help baby?... 💜🩵",
+    "Hint: almost moy dorogov, call me for help babe!... 💜🩵"
 ];
 let hintIndex = 0;
 
@@ -125,7 +133,7 @@ function typeWriter() {
     }
 }
 
-// Reasons
+// Tell me something sweet logic
 let lastReasonIndex = -1;
 reasonBtn.addEventListener("click", () => {
     let r;
@@ -153,6 +161,7 @@ const photos = [
     "photos/photo37.jpeg", "photos/photo38.JPG", "photos/photo39.JPG", "photos/photo40.jpeg", 
 ];
 
+//Show me someone beautiful logic
 let lastPhotoIndex = -1;
 photoBtn.addEventListener("click", () => {
     let r;
@@ -164,6 +173,7 @@ photoBtn.addEventListener("click", () => {
 });
 
 // ── Music player ───────────────────────────────────────
+// Track list
 const songs = [
     { title: "I Think We're Alone Now",    artist: "Tiffany",                   src: "music/song1.mp3" },
     { title: "Like Real People Do",        artist: "Hozier",                    src: "music/song2.mp3" },
@@ -298,7 +308,8 @@ const resultMessages = [
     { min: 5,  msg: "Not bad! My heart is safe with you 🩵" },
     { min: 12, msg: "You caught so many! Just like you caught me 💜🩵" },
     { min: 20, msg: "Heart-catching champion! You already had mine 💜" },
-    { min: 28, msg: "Perfect! You catch everything I throw at you 🩵💜✨" },
+    { min: 28, msg: "Perfect! Looks like my heart is safe with you. 🩵💜✨" },
+    { min: 35, msg: "Perfect! You caught every heart I threw at you… and the one that matters most. 🩵💜✨"}
 ];
 
 function getResultMsg(score) {

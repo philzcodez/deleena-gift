@@ -236,6 +236,7 @@ button:active {
     background: rgba(192,38,211,0.08);
     border: 1px solid rgba(192,38,211,0.15);
     width: 100%;
+    white-space: pre-line;
 }
 
 #reasonText:empty {
